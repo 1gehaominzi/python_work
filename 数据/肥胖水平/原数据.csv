@@ -1,4 +1,4 @@
-Age,Gender,Height,Weight,CALC,FAVC,FCVC,NCP,SCC,SMOKE,CH2O,family_history_with_overweight,FAF,TUE,CAEC,MTRANS,NObeyesdad
+Age,Gender,Height,Weight,你多久喝一次酒,你经常吃高热量食物吗,你通常在饭菜中吃蔬菜吗,你每天吃多少顿主餐,你监测你每天吃的卡路里吗,SMOKE,CH2O,family_history_with_overweight,你多久进行一次体育锻炼,你花多少时间使用技术设备，如手机、电子游戏、电视、电脑等,你在两餐之间吃什么食物吗,您通常使用哪种交通工具,肥胖水平
 21,Female,1.62,64,no,no,2,3,no,no,2,yes,0,1,Sometimes,Public_Transportation,Normal_Weight
 21,Female,1.52,56,Sometimes,no,3,3,yes,yes,3,yes,3,0,Sometimes,Public_Transportation,Normal_Weight
 23,Male,1.8,77,Frequently,no,2,3,no,no,2,yes,2,1,Sometimes,Public_Transportation,Normal_Weight

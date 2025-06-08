@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from matplotlib import font_manager
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -10,8 +9,12 @@ warnings.filterwarnings('ignore')
 plt.rcParams['font.sans-serif'] = ['SimHei']  
 plt.rcParams['axes.unicode_minus'] = False
 
-# 加载数据
+# 加载数据并确保正确读取列名
 df = pd.read_csv('肥胖预测数据收集/处理后.csv')
+
+# 打印实际列名以便验证
+print("数据集列名:")
+print(df.columns.tolist())
 
 # 1. 数据概览
 print("="*50)
@@ -44,8 +47,8 @@ plt.tight_layout()
 plt.savefig('obesity_distribution.png', dpi=300)
 plt.show()
 
-# 3. 数值特征分析
-numeric_features = ['Age', 'Height', 'Weight', 'FCVC', 'NCP', 'CH2O', 'FAF', 'Tue']
+# 3. 数值特征分析 - 使用正确的列名
+numeric_features = ['Age', 'Height', 'Weight', 'Fcvc', 'Ncp', 'Ch2o', 'Faf', 'Tue']
 plt.figure(figsize=(18, 12))
 
 # 绘制分布图
@@ -76,9 +79,9 @@ plt.tight_layout()
 plt.savefig('bmi_distribution.png', dpi=300)
 plt.show()
 
-# 5. 分类特征分析
-categorical_features = ['Gender', 'Family_history_with_overweight', 'FAVC', 
-                       'CAEC', 'SMOKE', 'SCC', 'CALC', 'MTRANS']
+# 5. 分类特征分析 - 使用正确的列名
+categorical_features = ['Gender', 'Family_history_with_overweight', 'Favc', 
+                       'Caec', 'Smoke', 'Scc', 'Calc', 'Mtrans']
 
 plt.figure(figsize=(18, 20))
 for i, col in enumerate(categorical_features):
@@ -140,33 +143,33 @@ plt.tight_layout()
 plt.savefig('correlation_heatmap.png', dpi=300)
 plt.show()
 
-# 8. 饮食习惯与肥胖关系
+# 8. 饮食习惯与肥胖关系 - 使用正确的列名
 fig, axes = plt.subplots(2, 2, figsize=(18, 14))
 fig.suptitle('饮食习惯与肥胖水平', fontsize=20)
 
 # 蔬菜摄入频率
-sns.boxplot(x='Obesity', y='FCVC', data=df, ax=axes[0, 0], palette='YlGn', order=obesity_order)
+sns.boxplot(x='Obesity', y='Fcvc', data=df, ax=axes[0, 0], palette='YlGn', order=obesity_order)
 axes[0, 0].set_title('蔬菜摄入频率与肥胖', fontsize=14)
 axes[0, 0].set_xlabel('肥胖水平')
 axes[0, 0].set_ylabel('蔬菜摄入频率')
 axes[0, 0].tick_params(axis='x', rotation=45)
 
 # 高热量食物摄入
-sns.countplot(x='Obesity', hue='FAVC', data=df, ax=axes[0, 1], palette='OrRd', order=obesity_order)
+sns.countplot(x='Obesity', hue='Favc', data=df, ax=axes[0, 1], palette='OrRd', order=obesity_order)
 axes[0, 1].set_title('高热量食物摄入与肥胖', fontsize=14)
 axes[0, 1].set_xlabel('肥胖水平')
 axes[0, 1].set_ylabel('数量')
 axes[0, 1].tick_params(axis='x', rotation=45)
 
 # 每日餐数
-sns.boxplot(x='Obesity', y='NCP', data=df, ax=axes[1, 0], palette='PuBu', order=obesity_order)
+sns.boxplot(x='Obesity', y='Ncp', data=df, ax=axes[1, 0], palette='PuBu', order=obesity_order)
 axes[1, 0].set_title('每日餐数与肥胖', fontsize=14)
 axes[1, 0].set_xlabel('肥胖水平')
 axes[1, 0].set_ylabel('每日餐数')
 axes[1, 0].tick_params(axis='x', rotation=45)
 
 # 零食习惯
-sns.countplot(x='Obesity', hue='CAEC', data=df, ax=axes[1, 1], palette='RdPu', order=obesity_order)
+sns.countplot(x='Obesity', hue='Caec', data=df, ax=axes[1, 1], palette='RdPu', order=obesity_order)
 axes[1, 1].set_title('零食习惯与肥胖', fontsize=14)
 axes[1, 1].set_xlabel('肥胖水平')
 axes[1, 1].set_ylabel('数量')
@@ -178,12 +181,12 @@ plt.subplots_adjust(top=0.92)
 plt.savefig('diet_obesity.png', dpi=300)
 plt.show()
 
-# 9. 生活方式与肥胖
+# 9. 生活方式与肥胖 - 使用正确的列名
 fig, axes = plt.subplots(2, 2, figsize=(18, 14))
 fig.suptitle('生活方式与肥胖水平', fontsize=20)
 
 # 身体活动频率
-sns.boxplot(x='Obesity', y='FAF', data=df, ax=axes[0, 0], palette='YlOrBr', order=obesity_order)
+sns.boxplot(x='Obesity', y='Faf', data=df, ax=axes[0, 0], palette='YlOrBr', order=obesity_order)
 axes[0, 0].set_title('身体活动频率与肥胖', fontsize=14)
 axes[0, 0].set_xlabel('肥胖水平')
 axes[0, 0].set_ylabel('活动频率')
@@ -197,7 +200,7 @@ axes[0, 1].set_ylabel('屏幕时间')
 axes[0, 1].tick_params(axis='x', rotation=45)
 
 # 饮酒习惯
-sns.countplot(x='Obesity', hue='CALC', data=df, ax=axes[1, 0], palette='Greens', order=obesity_order)
+sns.countplot(x='Obesity', hue='Calc', data=df, ax=axes[1, 0], palette='Greens', order=obesity_order)
 axes[1, 0].set_title('饮酒习惯与肥胖', fontsize=14)
 axes[1, 0].set_xlabel('肥胖水平')
 axes[1, 0].set_ylabel('数量')
@@ -205,7 +208,7 @@ axes[1, 0].tick_params(axis='x', rotation=45)
 axes[1, 0].legend(title='饮酒频率')
 
 # 交通工具
-sns.countplot(x='Obesity', hue='MTRANS', data=df, ax=axes[1, 1], palette='Purples', order=obesity_order)
+sns.countplot(x='Obesity', hue='Mtrans', data=df, ax=axes[1, 1], palette='Purples', order=obesity_order)
 axes[1, 1].set_title('交通工具与肥胖', fontsize=14)
 axes[1, 1].set_xlabel('肥胖水平')
 axes[1, 1].set_ylabel('数量')

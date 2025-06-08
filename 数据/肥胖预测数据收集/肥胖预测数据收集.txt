@@ -21,3 +21,10 @@ TUE ： 您花多少时间使用手机、电子游戏、电视、电脑等技术
 CALC ： 您多久喝一次酒？
 MTRANS ： 您通常使用哪种交通工具？
 Obesity_level （目标列）：肥胖水平
+BMI	身体质量指数
+Age_Group	年龄分组
+BMI_Class	BMI分类（WHO标准）
+HighCal_Veg_Interaction	高热量饮食与蔬菜摄入的交互作用
+PA_Tech_Ratio	体力活动与科技使用时间比率
+Age_BMI_Interaction	年龄与BMI的交互作用
+Meal_Density	每餐平均蔬菜摄入量
